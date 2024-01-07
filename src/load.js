@@ -1,94 +1,90 @@
 export class runit {
-    constructor() {
-        // Create an image element (uncomment if needed)
-        var image = document.createElement('img');
-        image.src = 'https://picsum.photos/200.jpg';
+    constructor(){
+          
+        const h2 = document.createElement('h2');
+h2.textContent = 'Tabs';
 
-        // Create a headline element
-        var headline = document.createElement('h1');
-        headline.textContent = 'Your Headline Copy';
+const p = document.createElement('p');
+p.textContent = 'Click on the buttons inside the tabbed menu:';
 
-        // Create a copy element
-        var copy = document.createElement('p');
-        copy.textContent = 'Your copy text goes here';
+const div = document.createElement('div');
+div.classList.add('tab');
 
-        // Get the div#content element
-        var content = document.getElementById('content');
+const buttonLondon = document.createElement('button');
+buttonLondon.id = 'London';
+buttonLondon.classList.add('tablinks');
+buttonLondon.textContent = 'London';
+buttonLondon.addEventListener('click', (event) => {
+    openCity(event, 'London');
+});
 
-        // Append the image, headline, and copy elements to the div#content
-        // Uncomment the next line if you want to append the image
-        content.appendChild(image);
-        content.appendChild(headline);
-        content.appendChild(copy);
-        content.appendChild(copy);
-    }
-}
+const buttonParis = document.createElement('button');
+buttonParis.id = 'Paris';
+buttonParis.classList.add('tablinks');
+buttonParis.textContent = 'Paris';
 
-// Example of exporting a function (uncomment if needed)
-// export function myFunction() {
-//     console.log('Hello from myFunction!');
-// }
+buttonParis.addEventListener('click', (event) => {
+    openCity(event, 'Paris');
+});
 
-// Example of using myFunction (uncomment if needed)
-// myFunction();
+const TokyoPage = document.createElement('div');
+const buttonTokyo = document.createElement('button');
+buttonTokyo.id = 'Tokyo';
+buttonTokyo.classList.add('tablinks');
+buttonTokyo.textContent = 'Tokyo';
+buttonTokyo.addEventListener('click', (event) => {
+    openCity(event, 'Tokyo');
+});
 
-export class tab1 {
-    constructor() {
-    // create a div element
-    var div = document.createElement('div');
-    div.id = 'tab1';
-    div.className = 'tabcontent';
-    div.style.display = 'block';
-    div.textContent = 'This is tab 1';
-    div.button = 'button';
-    const para = document.createElement("p");
-    const node = document.createTextNode('Welcome to a restaurant like no other.');
-    para.appendChild(node);
+div.appendChild(buttonLondon);
+div.appendChild(buttonParis);
+div.appendChild(buttonTokyo);
 
-    
-    //  adds the appropriate content and styles to that element and then appends it to the DOM
-    var content = document.getElementById('content');
-    content.appendChild(div);
-    content.appendChild(para);
+document.body.appendChild(h2);
+document.body.appendChild(p);
+document.body.appendChild(div);
+    }};
 
-    const toggleButton = document.createElement('button');
-    toggleButton.id = 'toggleButton1';
-    toggleButton.textContent = 'Tab 1';
-    content.appendChild(toggleButton);
+    export function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
 
-    const tabDiv = document.createElement('div');
-        tabDiv.classList.add('tab');
-
-        content.appendChild(tabDiv);
-        const visiblePartDiv = document.createElement('div');
-        visiblePartDiv.textContent = 'Visible Part';
-
-        const hiddenPartDiv = document.createElement('div');
-        hiddenPartDiv.classList.add('tab-content');
-        hiddenPartDiv.textContent = 'Hidden Part';
-
-        
-        // tabDiv.appendChild(visiblePartDiv);
-        tabDiv.appendChild(hiddenPartDiv);
-
-        function toggleVisibility() {
-            hiddenPartDiv.style.display = (hiddenPartDiv.style.display === 'none') ? 'block' : 'none';
+        if (cityName === 'Tokyo') {
+            // show tokyo page
+            const TokyoPage = document.createElement('div');
+            TokyoPage.id = 'Tokyopage';
+            TokyoPage.classList.add('tabcontent');
+            TokyoPage.style.display = 'block';
+            TokyoPage.textContent = 'Tokyo is the capital of Japan.';
+            document.body.appendChild(TokyoPage);
         }
 
-        // Add click event listener to the button
-        toggleButton.addEventListener('click', toggleVisibility);
-} }
+        if (cityName === 'Paris') {
+            // show paris page
+            const ParisPage = document.createElement('div');
+            ParisPage.id = 'Parispage';
+            ParisPage.classList.add('tabcontent');
+            ParisPage.style.display = 'block';
+            ParisPage.textContent = 'Paris is the capital of France.';
+            document.body.appendChild(ParisPage);
+        }
 
-export class tab2 {
-    constructor() {
-    // create a div element
-    var div = document.createElement('div');
-    div.id = 'tab2';
-    div.style.display = 'block';
-    div.className = 'tabcontent';
-    div.textContent = 'This is tab 2';
-    //  adds the appropriate content and styles to that element and then appends it to the DOM
-    var content = document.getElementById('content');
-    content.appendChild(div);
-} 
-}
+        if (cityName === 'London') {
+            // show london page
+            const LondonPage = document.createElement('div');
+            LondonPage.id = 'Londonpage';
+            LondonPage.classList.add('tabcontent');
+            LondonPage.style.display = 'block';
+            LondonPage.textContent = 'London is the capital of England.';
+            document.body.appendChild(LondonPage);
+        }
+    }
