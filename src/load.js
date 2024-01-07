@@ -40,23 +40,44 @@ export class tab1 {
     div.className = 'tabcontent';
     div.style.display = 'block';
     div.textContent = 'This is tab 1';
+    div.button = 'button';
+    const para = document.createElement("p");
+    const node = document.createTextNode('Welcome to a restaurant like no other.');
+    para.appendChild(node);
+
+    
     //  adds the appropriate content and styles to that element and then appends it to the DOM
     var content = document.getElementById('content');
     content.appendChild(div);
-}   
-// addClickListener() {
-//     var tab1 = document.getElementById('tab1');
+    content.appendChild(para);
 
-//     if (tab1) {
-//         tab1.addEventListener('click', function() {
-//             console.log('Tab 1 clicked!');
-//             // Your click event handling code here
-//         });
-//     } else {
-//         console.error("Element with ID 'tab1' not found.");
-//     }
-// }
-}
+    const toggleButton = document.createElement('button');
+    toggleButton.id = 'toggleButton1';
+    toggleButton.textContent = 'Tab 1';
+    content.appendChild(toggleButton);
+
+    const tabDiv = document.createElement('div');
+        tabDiv.classList.add('tab');
+
+        content.appendChild(tabDiv);
+        const visiblePartDiv = document.createElement('div');
+        visiblePartDiv.textContent = 'Visible Part';
+
+        const hiddenPartDiv = document.createElement('div');
+        hiddenPartDiv.classList.add('tab-content');
+        hiddenPartDiv.textContent = 'Hidden Part';
+
+        
+        // tabDiv.appendChild(visiblePartDiv);
+        tabDiv.appendChild(hiddenPartDiv);
+
+        function toggleVisibility() {
+            hiddenPartDiv.style.display = (hiddenPartDiv.style.display === 'none') ? 'block' : 'none';
+        }
+
+        // Add click event listener to the button
+        toggleButton.addEventListener('click', toggleVisibility);
+} }
 
 export class tab2 {
     constructor() {

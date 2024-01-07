@@ -9,6 +9,19 @@ document.addEventListener('DOMContentLoaded', function(tabName) {
     new runit();
     new tab1();
     new tab2();
+    // addClickListener('tab1', function() {
+    //     console.log('Tab 1 clicked!');
+    //     // Your click event handling code here
+    //     hideTab('tab2');
+    //     showTab('tab1');
+    // });
+
+    // addClickListener('tab2', function() {
+    //     console.log('Tab 2 clicked!');
+    //     // Your click event handling code here
+    //     hideTab('tab1');
+    //     showTab('tab2');
+    // });
 });
 
 // create tab switching logic
@@ -26,19 +39,6 @@ function addClickListener(tabId, clickHandler) {
 
 // Define the 'tab1' element in your HTML code
 // add event listeners to each tab
-addClickListener('tab1', function() {
-    console.log('Tab 1 clicked!');
-    // Your click event handling code here
-    hideTab('tab2');
-    showTab('tab1');
-});
-
-addClickListener('tab2', function() {
-    console.log('Tab 2 clicked!');
-    // Your click event handling code here
-    hideTab('tab1');
-    showTab('tab2');
-});
 
 // Function to hide a tab by setting its display property to 'none'
 function hideTab(tabId) {
